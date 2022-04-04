@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import { Container } from 'semantic-ui-react';
 import EventDashboard from '../../features/events/eventDashboard/EventDashboard';
 import EventDetaildPage from '../../features/events/eventDetailed/EventDetaildPage';
@@ -30,6 +31,7 @@ function App() {
   return (
     <>
       <ModalManager />
+      <ToastContainer position='bottom-right' theme='colored' hideProgressBar autoClose={3000}/>
       <Route exact path="/" component={HomePage} />
       <Route
         path={'/(.+)'}
