@@ -9,6 +9,7 @@ import EventForm from '../../features/events/eventForm/EventForm';
 import HomePage from '../../features/home/HomePage';
 import NavBar from '../../features/nav/NavBar';
 import Sandbox from '../../features/sanbox/Sandbox';
+import ErrorComponent from '../common/errors/ErrorComponent';
 import ModalManager from '../common/modals/ModalManager';
 
 import './App.css';
@@ -31,7 +32,7 @@ function App() {
   return (
     <>
       <ModalManager />
-      <ToastContainer position='bottom-right' theme='colored' hideProgressBar autoClose={3000}/>
+      <ToastContainer position='bottom-right' theme='colored' hideProgressBar autoClose={3000} />
       <Route exact path="/" component={HomePage} />
       <Route
         path={'/(.+)'}
@@ -48,6 +49,7 @@ function App() {
                 component={EventForm}
                 key={key}
               />
+              <Route path='/error' component={ErrorComponent} />
             </Container>
           </>
         )}

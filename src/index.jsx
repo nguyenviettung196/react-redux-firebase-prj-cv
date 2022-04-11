@@ -13,16 +13,14 @@ import { loadEvents } from "./features/events/eventActions";
 
 const store = configureStore();
 
-store.dispatch(loadEvents());
-
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <ScrollToTop />
-        <App />
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+
+  <Provider store={store}>
+    <BrowserRouter>
+      <ScrollToTop />
+      <App />
+    </BrowserRouter>
+  </Provider>
+  ,
   document.getElementById("root")
 );
