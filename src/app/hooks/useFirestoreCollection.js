@@ -20,3 +20,4 @@ export default function useFirestoreCollection({ query, data, deps }) {
 		};
 	}, deps);
 }
+ 

@@ -24,3 +24,4 @@ export default function useFirestoreDoc({ query, data, deps, shouldExecute = tru
 		};
 	}, deps);
 }
+ 

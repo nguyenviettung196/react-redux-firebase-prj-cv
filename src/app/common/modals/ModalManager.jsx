@@ -1,12 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import LoginForm from '../../../features/auth/LoginForm';
+import RegisterForm from '../../../features/auth/RegisterForm';
 import TestModal from '../../../features/sanbox/TestModal';
 
 export default function ModalManager() {
   const modalLookup = {
     TestModal,
-    LoginForm
+    LoginForm,
+    RegisterForm
+
   }; //check type of modal want to open
   const currentModal = useSelector(state => state.modals); // useSelector to find out current modal is
   let renderedModal;
