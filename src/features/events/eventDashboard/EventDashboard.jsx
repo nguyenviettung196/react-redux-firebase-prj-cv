@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid, GridColumn } from 'semantic-ui-react';
 import { listenToEventsFromFirestore } from '../../../app/firestore/firestoreService';
@@ -12,11 +12,19 @@ const EventDashboard = () => {
   const dispatch = useDispatch();
   const { events } = useSelector((state) => state.event);
   const { loading } = useSelector(state => state.async);
+  const [predicate, setPredicate] = useState(new Map([
+    ['startDate', new Date()],
+    ['filter', 'all']
+  ]));
+
+  function handleSetPredicate(key, value) {
+    setPredicate(new Map(predicate.set(key, value)));
+  }
 
   useFirestoreCollection({
-    query: () => listenToEventsFromFirestore(),
+    query: () => listenToEventsFromFirestore(predicate),
     data: events => dispatch(listenToEvents(events)),
-    deps: [dispatch]
+    deps: [dispatch, predicate]
   });
 
   return (
@@ -31,7 +39,7 @@ const EventDashboard = () => {
         <EventList events={events} />
       </GridColumn>
       <GridColumn width={6}>
-        <EventFilter />
+        <EventFilter predicate={predicate} setPredicate={handleSetPredicate} loading={loading} />
       </GridColumn>
     </Grid>
   );

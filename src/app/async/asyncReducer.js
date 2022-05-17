@@ -1,7 +1,7 @@
 const ASYNC_ACTION_START = 'ASYNC_ACTION_START';
 const ASYNC_ACTION_FINISH = 'ASYNC_ACTION_FINISH';
 const ASYNC_ACTION_ERROR = 'ASYNC_ACTION_ERROR';
-export const APP_LOADED = 'APP_LOADED'; 
+export const APP_LOADED = 'APP_LOADED';
 
 export function asyncActionStart() {
 	return {
@@ -14,6 +14,7 @@ export function asyncActionFinish() {
 	};
 }
 export function asyncActionError(error) {
+	console.log(error);
 	return {
 		type: ASYNC_ACTION_ERROR,
 		payload: error
@@ -48,7 +49,7 @@ export default function asyncReducer(state = initialState, { type, payload }) {
 		case APP_LOADED:
 			return {
 				...state,
-				initialized: true 
+				initialized: true
 			};
 		default:
 			return state;

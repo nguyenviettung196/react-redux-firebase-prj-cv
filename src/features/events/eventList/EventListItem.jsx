@@ -26,7 +26,7 @@ const EventListItem = ({ event }) => {
             <Item.Image size="tiny" circular src={event.hostPhotoURL} />
             <ItemContent>
               <ItemHeader content={event.title} />
-              <ItemDescription>Hosted by {event.hostedBy}</ItemDescription>
+              <ItemDescription>Hosted by <Link to={`/profile/${ event.hostUid }`}>{event.hostedBy}</Link></ItemDescription>
               {event.isCancelled && (
                 <Label
                   style={{ top: '-40px' }}
